@@ -1,0 +1,24 @@
+@model IEnumerable<HospitalAppointmentSystem.Models.Post>
+
+<!-- Displays the API posts heading. -->
+<h2>Posts from JSONPlaceholder API</h2>
+
+<!-- Displays the retrieved posts in a table. -->
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Post ID</th>
+        <th>Post Title</th>
+    </tr>
+
+    <!-- Iterates through every post received from the API. -->
+    @foreach (var post in Model)
+    {
+        <tr>
+            <!-- Displays the post ID. -->
+            <td>@post.Id</td>
+
+            <!-- Displays the post title. -->
+            <td>@post.Title</td>
+        </tr>
+    }
+</table>
