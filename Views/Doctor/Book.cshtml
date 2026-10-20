@@ -1,0 +1,33 @@
+@model HospitalAppointmentSystem.Models.Doctor
+
+<!-- Displays the appointment form heading. -->
+<h2>Book Hospital Appointment</h2>
+
+<!-- Submits patient details to the Book POST action. -->
+<form asp-action="Book" method="post">
+
+    <!-- Includes the doctor ID as a hidden form field. -->
+    <input type="hidden" name="DoctorId" value="@Model.DoctorId" />
+
+    <!-- Displays the selected doctor's name. -->
+    <p>Doctor: @Model.DoctorName</p>
+
+    <!-- Displays the doctor's specialization. -->
+    <p>Specialization: @Model.Specialization</p>
+
+    <!-- Displays the total consultation charge. -->
+    <p>Consultation Fee: ₹@(Model.ConsultationFee + 100)</p>
+
+    <!-- Provides a field for entering the patient's name. -->
+    <label>Patient Name:</label>
+    <input type="text" name="PatientName" required />
+
+    <!-- Displays validation errors, if any. -->
+    <div asp-validation-summary="All"></div>
+
+    <!-- Adds an anti-forgery token for form security. -->
+    @Html.AntiForgeryToken()
+
+    <!-- Submits the appointment request. -->
+    <button type="submit">Submit Appointment</button>
+</form>

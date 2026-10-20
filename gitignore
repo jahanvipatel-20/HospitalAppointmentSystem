@@ -1,0 +1,15 @@
+
+# Ignore generated build folders
+bin/
+obj/
+
+# Ignore Visual Studio and VS Code local settings
+.vs/
+.vscode/
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore local configuration containing secrets
+appsettings.Local.json

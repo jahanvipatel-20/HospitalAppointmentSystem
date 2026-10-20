@@ -1,0 +1,14 @@
+<!-- Displays the booking confirmation heading. -->
+<h2>Appointment Request Submitted</h2>
+
+<!-- Displays the patient's name received from the controller. -->
+<p>Patient Name: @ViewBag.PatientName</p>
+
+<!-- Displays the selected doctor's ID. -->
+<p>Doctor ID: @ViewBag.DoctorId</p>
+
+<!-- Displays the appointment request status. -->
+<p>Your appointment request has been submitted successfully.</p>
+
+<!-- Provides a link to return to the doctor list. -->
+<a asp-controller="Doctor" asp-action="Index">Back to Doctors</a>

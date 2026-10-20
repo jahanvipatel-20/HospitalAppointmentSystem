@@ -1,0 +1,67 @@
+@model IEnumerable<HospitalAppointmentSystem.Models.Doctor>
+@using HospitalAppointmentSystem.Extensions
+
+<!-- Displays the page heading. -->
+<h2>Hospital Doctor List</h2>
+
+<!-- Allows the user to select a specialization. -->
+<form method="get" asp-action="Index">
+    <label>Specialization:</label>
+
+    <!-- Submits the selected specialization through the QueryString. -->
+    <select name="specialization">
+        <option value="">All Doctors</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Neurology">Neurology</option>
+    </select>
+
+    <!-- Submits the selected specialization. -->
+    <button type="submit">Filter</button>
+</form>
+
+<!-- Displays doctor information in a table. -->
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Experience</th>
+        <th>Fee</th>
+        <th>Total Charge</th>
+        <th>Action</th>
+    </tr>
+
+    <!-- Iterates through the list of doctors. -->
+    @foreach (var doctor in Model)
+    {
+        <tr>
+            <!-- Displays the doctor's ID. -->
+            <td>@doctor.DoctorId</td>
+
+            <!-- Displays the doctor's name. -->
+            <td>@doctor.DoctorName</td>
+
+            <!-- Displays the specialization. -->
+            <td>@doctor.Specialization</td>
+
+            <!-- Displays years of experience. -->
+            <td>@doctor.Experience years</td>
+
+            <!-- Displays the basic consultation fee. -->
+            <td>₹@doctor.ConsultationFee</td>
+
+            <!-- Calculates and displays the total fee. -->
+            <td>₹@doctor.CalculateTotalCharge()</td>
+
+            <!-- Passes DoctorId in the URL as a QueryString. -->
+            <td>
+                <a asp-action="Details"
+                   asp-route-id="@doctor.DoctorId">Details</a>
+
+                <!-- Opens the appointment form for the selected doctor. -->
+                <a asp-action="Book"
+                   asp-route-id="@doctor.DoctorId">Book Appointment</a>
+            </td>
+        </tr>
+    }
+</table>

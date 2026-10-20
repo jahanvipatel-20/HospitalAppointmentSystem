@@ -1,0 +1,23 @@
+@model HospitalAppointmentSystem.Models.Doctor
+@using HospitalAppointmentSystem.Extensions
+
+<!-- Displays the doctor details heading. -->
+<h2>Doctor Details</h2>
+
+<!-- Displays the selected doctor's information. -->
+<p>Doctor ID: @Model.DoctorId</p>
+<p>Doctor Name: @Model.DoctorName</p>
+<p>Specialization: @Model.Specialization</p>
+<p>Experience: @Model.Experience years</p>
+<p>Consultation Fee: ₹@Model.ConsultationFee</p>
+
+<!-- Calculates the consultation fee including the ₹100 service charge. -->
+<p>Total Consultation Charge: ₹@Model.CalculateTotalCharge()</p>
+
+<!-- Opens the appointment form using the doctor's ID. -->
+<a asp-action="Book" asp-route-id="@Model.DoctorId">
+    Book Appointment
+</a>
+
+<!-- Returns to the doctor list. -->
+<a asp-action="Index">Back to Doctor List</a>
